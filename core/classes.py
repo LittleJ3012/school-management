@@ -45,7 +45,7 @@ class Pessoa(ABC):
     
 class Aluno(Pessoa):
     def __init__(self, nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula, indice):
-        super().__init__(nome, nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula)
+        super().__init__(nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula)
         self.__indice = indice
     
     @property
