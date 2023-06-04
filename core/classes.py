@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+### Para CRUD de aluno e professor ###
+
 class Pessoa(ABC):
     def __init__(self, nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula):
         self.__nome = nome
@@ -34,27 +36,26 @@ class Pessoa(ABC):
     def endereco(self):
         return self.__endereco
     
-    @endereco.setter
-    def endereco(self, novo_endereco):
+    def alterar_endereco(self, novo_endereco):
         self.__endereco = novo_endereco
-    # O endereço pode ser alterado no futuro
+    # O endereço poderá ser alterado
     
     @property
     def matricula(self):
         return self.__matricula
     
 class Aluno(Pessoa):
-    def __init__(self, nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula, indice):
+    def __init__(self, nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula):
         super().__init__(nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula)
-        self.__indice = indice
+        self.__indice = 0
     
     @property
     def indice(self):
         return self.__indice
     
-    @indice.setter
-    def indice(self, indice):
+    def alterar_indice(self, indice):
         self.__indice = indice
+    # O índice, inicialmente zero, será alterado
     
 class Professor(Pessoa):
     def __init__(self, nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula, formacao):
@@ -65,6 +66,7 @@ class Professor(Pessoa):
     def formacao(self):
         return self.__formacao
     
-    @formacao.setter
-    def formacao(self, formacao):
+    def atualizar_formacao(self, formacao):
         self.__formacao = formacao
+        
+######################################
