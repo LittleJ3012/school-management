@@ -61,6 +61,30 @@ class Professor(Pessoa):
     def __init__(self, nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula, formacao):
         super().__init__(nome, nome, cpf, rg, data_de_nascimento, nacionalidade, endereco, matricula)
         self.__formacao = formacao
+class Turma:
+    def __init__(self, professor, id_turma, periodo_letivo, max_alunos, alunos=None):
+        if not professor or not id_turma or not periodo_letivo or not max_alunos:
+            raise ValueError("Todos os campos obrigatórios devem ser preenchidos.")
+        self.professor = professor
+        self.id_turma = id_turma
+        self.alunos = alunos if alunos else []
+        self.periodo_letivo = periodo_letivo
+        self.max_alunos = max_alunos
+
+    def adicionar_aluno(self, aluno):
+        self.alunos.append(aluno)
+
+    def remover_aluno(self, aluno):
+        self.alunos.remove(aluno)
+
+class TurmaManagementApp(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Gerenciamento de Turmas")
+        self.turmas = []
+
+        self.create_widgets()
+
         
     @property
     def formacao(self):
