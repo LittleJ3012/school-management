@@ -69,4 +69,20 @@ class Professor(Pessoa):
     def atualizar_formacao(self, formacao):
         self.__formacao = formacao
         
+ class Turma:
+    def __init__(self, professor, id_turma, periodo_letivo, max_alunos, alunos=None):
+        if not professor or not id_turma or not periodo_letivo or not max_alunos:
+            raise ValueError("Todos os campos obrigatórios devem ser preenchidos.")
+        self.professor = professor
+        self.id_turma = id_turma
+        self.alunos = alunos if alunos else []
+        self.periodo_letivo = periodo_letivo
+        self.max_alunos = max_alunos
+
+    def adicionar_aluno(self, aluno):
+        self.alunos.append(aluno)
+
+    def remover_aluno(self, aluno):
+        self.alunos.remove(aluno)
+        
 ######################################
